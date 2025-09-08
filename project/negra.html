@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wallet Simulator</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; color: #333; background: #fff; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    header h1 { color: #0284c7; margin: 0; }
+    header a { color: #0ea5e9; text-decoration: none; font-weight: 500; }
+
+    section { padding: 3rem 1.5rem; text-align: center; }
+    .hero { background: #f0f9ff; }
+    .hero span { color: #0284c7; }
+    .badge { display: inline-block; padding: 0.25rem 1rem; background: #bae6fd; color: #0369a1; border-radius: 9999px; margin-bottom: 1rem; }
+    .btn { padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-weight: bold; cursor: pointer; }
+    .btn-primary { background: #0284c7; color: #fff; border: none; }
+    .btn-primary:hover { background: #0369a1; }
+    .btn-outline { border: 2px solid #0284c7; color: #0284c7; background: #fff; }
+    .btn-outline:hover { background: #e0f2fe; }
+
+    .grid { display: grid; gap: 1.5rem; }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .card { background: #fff; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+
+    footer { background: #fff; text-align: center; padding: 1rem; font-size: 0.9rem; color: #555; border-top: 1px solid #ddd; }
+    .bg-light { background: #f0f9ff; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Wallet Simulator</h1>
+    <a href="#contact">Contacto</a>
+  </header>
+
+  <section class="hero">
+    <p class="badge">Diseñado para todos</p>
+    <h2>Aprende a usar tu billetera virtual de forma <span>segura y fácil</span></h2>
+    <p>Un simulador especialmente diseñado para personas con problemas cognitivos. Practica sin riesgos y gana confianza en el manejo de dinero digital.</p>
+    <div style="margin-top:1.5rem; display:flex; gap:1rem; justify-content:center;">
+      <button class="btn btn-primary">Comenzar simulación</button>
+      <button class="btn btn-outline">Ver tutoriales</button>
+    </div>
+  </section>
+
+  <section>
+    <h3>Funciones principales</h3>
+    <div class="grid grid-3" style="max-width:1000px; margin:2rem auto;">
+      <div class="card">
+        <h4>Transferir dinero</h4>
+        <p>Aprende a enviar dinero a familiares o amigos de manera fácil y práctica.</p>
+      </div>
+      <div class="card">
+        <h4>Recargar celular</h4>
+        <p>Simula recargas en tu teléfono sin riesgos ni costos.</p>
+      </div>
+      <div class="card">
+        <h4>Recargar SUBE</h4>
+        <p>Practica cómo cargar tu tarjeta SUBE para viajar tranquilo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-light">
+    <h3>¿Por qué elegir billetera fácil?</h3>
+    <div class="grid grid-4" style="max-width:1200px; margin:2rem auto;">
+      <div class="card"><h4>100% seguro</h4><p>Simulación sin riesgo real de pérdida de dinero</p></div>
+      <div class="card"><h4>A tu ritmo</h4><p>Aprende sin presión, repite cuantas veces necesites</p></div>
+      <div class="card"><h4>Soporte 24/7</h4><p>Ayuda disponible cuando la necesites</p></div>
+      <div class="card"><h4>Certificado</h4><p>Reconocimiento por completar el entrenamiento</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Preguntas frecuentes</h3>
+    <div class="grid" style="max-width:600px; margin:2rem auto;">
+      <div class="card">¿Es realmente seguro practicar?</div>
+      <div class="card">¿Necesito conocimientos previos?</div>
+      <div class="card">¿Puedo usar el simulador en mi teléfono?</div>
+    </div>
+  </section>
+
+  <section id="contact" class="bg-light">
+    <h3>¿Necesitas ayuda?</h3>
+    <div class="grid grid-3" style="max-width:1000px; margin:2rem auto;">
+      <div class="card">
+        <h4>Teléfono</h4>
+        <p>0800-123-4567</p>
+        <button class="btn btn-outline">Llamar ahora</button>
+      </div>
+      <div class="card">
+        <h4>Chat en vivo</h4>
+        <p>Disponible ahora</p>
+        <button class="btn btn-outline">Iniciar chat</button>
+      </div>
+      <div class="card">
+        <h4>Email</h4>
+        <p>ayuda@walletsimulator.com</p>
+        <button class="btn btn-outline">Enviar mail</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © Wallet Simulator - Todos los derechos reservados
+  </footer>
+</body>
+</html>
