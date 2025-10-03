@@ -1,110 +1,780 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wallet Simulator</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; color: #333; background: #fff; }
-    header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    header h1 { color: #0284c7; margin: 0; }
-    header a { color: #0ea5e9; text-decoration: none; font-weight: 500; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💙 BilleteraFácil - Simulador de Billetera Virtual</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    section { padding: 3rem 1.5rem; text-align: center; }
-    .hero { background: #f0f9ff; }
-    .hero span { color: #0284c7; }
-    .badge { display: inline-block; padding: 0.25rem 1rem; background: #bae6fd; color: #0369a1; border-radius: 9999px; margin-bottom: 1rem; }
-    .btn { padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-weight: bold; cursor: pointer; }
-    .btn-primary { background: #0284c7; color: #fff; border: none; }
-    .btn-primary:hover { background: #0369a1; }
-    .btn-outline { border: 2px solid #0284c7; color: #0284c7; background: #fff; }
-    .btn-outline:hover { background: #e0f2fe; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background-color: #ffffff;
+        }
 
-    .grid { display: grid; gap: 1.5rem; }
-    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-    .grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-    .card { background: #fff; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
 
-    footer { background: #fff; text-align: center; padding: 1rem; font-size: 0.9rem; color: #555; border-top: 1px solid #ddd; }
-    .bg-light { background: #f0f9ff; }
-  </style>
+        /* Header */
+        .header {
+            border-bottom: 1px solid #e2e8f0;
+            background-color: #f8fafc;
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: #0ea5e9;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .logo-text h1 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #1e293b;
+        }
+
+        .logo-text p {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        .help-btn {
+            background-color: transparent;
+            border: 2px solid #e2e8f0;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .help-btn:hover {
+            border-color: #0ea5e9;
+            color: #0ea5e9;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #f1f5f9;
+            color: #475569;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero .highlight {
+            color: #0ea5e9;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background-color: #0ea5e9;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            background-color: #0284c7;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: #0ea5e9;
+            border: 2px solid #0ea5e9;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-outline:hover {
+            background-color: #0ea5e9;
+            color: white;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 1rem;
+            background-color: #f8fafc;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        .section-title p {
+            font-size: 1.25rem;
+            color: #64748b;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            border-color: #0ea5e9;
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon {
+            width: 4rem;
+            height: 4rem;
+            background-color: #e0f2fe;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: #0ea5e9;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+
+        .card-description {
+            font-size: 1.125rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .card-list {
+            list-style: none;
+        }
+
+        .card-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .check-icon {
+            color: #0ea5e9;
+            margin-right: 0.75rem;
+            font-size: 1.25rem;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 4rem 1rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Tutorials Section */
+        .tutorials {
+            padding: 4rem 1rem;
+        }
+
+        .tutorial-card {
+            background-color: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 2rem;
+        }
+
+        .tutorial-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .tutorial-list {
+            list-style: none;
+        }
+
+        .tutorial-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
+        }
+
+        .tutorial-icon {
+            color: #0ea5e9;
+            margin-right: 0.75rem;
+            margin-top: 0.25rem;
+            font-size: 1.5rem;
+        }
+
+        .tutorial-visual {
+            background-color: #f8fafc;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .play-icon {
+            font-size: 6rem;
+            color: #0ea5e9;
+            margin-bottom: 1rem;
+        }
+
+        /* Statistics Section */
+        .stats {
+            padding: 4rem 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #0ea5e9;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.25rem;
+            color: #64748b;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 4rem 1rem;
+            background-color: #f8fafc;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .faq-item {
+            background-color: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+        }
+
+        .faq-question {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .faq-answer {
+            font-size: 1.125rem;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 4rem 1rem;
+            background-color: #e0f2fe;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: #1e293b;
+        }
+
+        .cta p {
+            font-size: 1.25rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 1rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background-color: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .contact-info {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 1rem 0;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid #e2e8f0;
+            background-color: #f8fafc;
+            padding: 3rem 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .footer h4 {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .footer ul {
+            list-style: none;
+        }
+
+        .footer ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer a {
+            color: #64748b;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #0ea5e9;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #e2e8f0;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            text-align: center;
+            color: #64748b;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 640px) {
+            .hero-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .cta-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .tutorial-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-content {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .tutorial-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Wallet Simulator</h1>
-    <a href="#contact">Contacto</a>
-  </header>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">💙</div>
+                    <div class="logo-text">
+                        <h1>💙 BilleteraFácil</h1>
+                        <p>🎯 Fácil de usar</p>
+                    </div>
+                </div>
+                <button class="help-btn">📞 Ayuda</button>
+            </div>
+        </div>
+    </header>
 
-  <section class="hero">
-    <p class="badge">Diseñado para todos</p>
-    <h2>Aprende a usar tu billetera virtual de forma <span>segura y fácil</span></h2>
-    <p>Un simulador especialmente diseñado para personas con problemas cognitivos. Practica sin riesgos y gana confianza en el manejo de dinero digital.</p>
-    <div style="margin-top:1.5rem; display:flex; gap:1rem; justify-content:center;">
-      <button class="btn btn-primary">Comenzar simulación</button>
-      <button class="btn btn-outline">Ver tutoriales</button>
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="badge">👥 Para todos</div>
+            <h1>🎓 Aprende tu billetera virtual <span class="highlight">fácil y seguro</span></h1>
+            <p>🛡️ Practica sin riesgos • 🎯 Gana confianza • 💰 Maneja tu dinero digital</p>
+            <div class="hero-buttons">
+                <button class="btn-primary">🚀 Empezar ahora</button>
+                <button class="btn-outline">📚 Ver videos</button>
+            </div>
+        </div>
+    </section>
 
-  <section>
-    <h3>Funciones principales</h3>
-    <div class="grid grid-3" style="max-width:1000px; margin:2rem auto;">
-      <div class="card">
-        <h4>Transferir dinero</h4>
-        <p>Aprende a enviar dinero a familiares o amigos de manera fácil y práctica.</p>
-      </div>
-      <div class="card">
-        <h4>Recargar celular</h4>
-        <p>Simula recargas en tu teléfono sin riesgos ni costos.</p>
-      </div>
-      <div class="card">
-        <h4>Recargar SUBE</h4>
-        <p>Practica cómo cargar tu tarjeta SUBE para viajar tranquilo.</p>
-      </div>
-    </div>
-  </section>
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>⭐ Qué puedes hacer</h2>
+                <p>🎯 Practica estas cosas importantes</p>
+            </div>
+            <div class="features-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">💸</div>
+                        <h3>💸 Enviar dinero</h3>
+                        <p class="card-description">👨‍👩‍👧‍👦 A tu familia y amigos</p>
+                    </div>
+                    <ul class="card-list">
+                        <li><span class="check-icon">✓</span>👣 Paso a paso</li>
+                        <li><span class="check-icon">✓</span>🛡️ Sin peligro</li>
+                        <li><span class="check-icon">✓</span>✅ Todo claro</li>
+                    </ul>
+                </div>
 
-  <section class="bg-light">
-    <h3>¿Por qué elegir billetera fácil?</h3>
-    <div class="grid grid-4" style="max-width:1200px; margin:2rem auto;">
-      <div class="card"><h4>100% seguro</h4><p>Simulación sin riesgo real de pérdida de dinero</p></div>
-      <div class="card"><h4>A tu ritmo</h4><p>Aprende sin presión, repite cuantas veces necesites</p></div>
-      <div class="card"><h4>Soporte 24/7</h4><p>Ayuda disponible cuando la necesites</p></div>
-      <div class="card"><h4>Certificado</h4><p>Reconocimiento por completar el entrenamiento</p></div>
-    </div>
-  </section>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📱</div>
+                        <h3>📱 Cargar celular</h3>
+                        <p class="card-description">📶 Para tener internet siempre</p>
+                    </div>
+                    <ul class="card-list">
+                        <li><span class="check-icon">✓</span>🏢 Todas las empresas</li>
+                        <li><span class="check-icon">✓</span>💡 Te ayudamos a elegir</li>
+                        <li><span class="check-icon">✓</span>🔄 Se carga solo</li>
+                    </ul>
+                </div>
 
-  <section>
-    <h3>Preguntas frecuentes</h3>
-    <div class="grid" style="max-width:600px; margin:2rem auto;">
-      <div class="card">¿Es realmente seguro practicar?</div>
-      <div class="card">¿Necesito conocimientos previos?</div>
-      <div class="card">¿Puedo usar el simulador en mi teléfono?</div>
-    </div>
-  </section>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🚌</div>
+                        <h3>🚌 Cargar SUBE</h3>
+                        <p class="card-description">🚇 Para viajar en colectivo y tren</p>
+                    </div>
+                    <ul class="card-list">
+                        <li><span class="check-icon">✓</span>⚡ Muy rápido</li>
+                        <li><span class="check-icon">✓</span>📋 Ves todo lo que hiciste</li>
+                        <li><span class="check-icon">✓</span>🔔 Te recordamos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="contact" class="bg-light">
-    <h3>¿Necesitas ayuda?</h3>
-    <div class="grid grid-3" style="max-width:1000px; margin:2rem auto;">
-      <div class="card">
-        <h4>Teléfono</h4>
-        <p>0800-123-4567</p>
-        <button class="btn btn-outline">Llamar ahora</button>
-      </div>
-      <div class="card">
-        <h4>Chat en vivo</h4>
-        <p>Disponible ahora</p>
-        <button class="btn btn-outline">Iniciar chat</button>
-      </div>
-      <div class="card">
-        <h4>Email</h4>
-        <p>ayuda@walletsimulator.com</p>
-        <button class="btn btn-outline">Enviar mail</button>
-      </div>
-    </div>
-  </section>
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-title">
+                <h2>🌟 Por qué somos geniales</h2>
+                <p>💙 Hecho especialmente para ti</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🛡️</div>
+                        <h3>🛡️ Súper seguro</h3>
+                    </div>
+                    <p class="card-description">🎮 Es como un juego, no pierdes dinero real</p>
+                </div>
 
-  <footer>
-    © Wallet Simulator - Todos los derechos reservados
-  </footer>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🐌</div>
+                        <h3>🐌 Sin apuro</h3>
+                    </div>
+                    <p class="card-description">🔄 Practica las veces que quieras</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🤝</div>
+                        <h3>🤝 Siempre te ayudamos</h3>
+                    </div>
+                    <p class="card-description">📞 Llamanos cuando quieras</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🏆</div>
+                        <h3>🏆 Diploma</h3>
+                    </div>
+                    <p class="card-description">🎉 Te damos un premio cuando termines</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tutorials Section -->
+    <section class="tutorials">
+        <div class="container">
+            <div class="section-title">
+                <h2>📺 Videos que te enseñan</h2>
+                <p>🎯 Hechos especialmente para ti</p>
+            </div>
+            <div class="tutorial-card">
+                <div class="tutorial-content">
+                    <div>
+                        <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; color: #1e293b;">🎓 Aprende tranquilo</h3>
+                        <ul class="tutorial-list">
+                            <li><span class="tutorial-icon">📹</span>📹 Videos despacio y claros</li>
+                            <li><span class="tutorial-icon">👨‍👩‍👧‍👦</span>👨‍👩‍👧‍👦 Tu familia te puede ayudar</li>
+                            <li><span class="tutorial-icon">⚠️</span>⚠️ Te enseñamos a estar seguro</li>
+                        </ul>
+                        <button class="btn-primary" style="margin-top: 1.5rem;">🎬 Ver todos los videos</button>
+                    </div>
+                    <div class="tutorial-visual">
+                        <div class="play-icon">📺</div>
+                        <p style="font-size: 1.125rem; color: #64748b;">📚 Más de 20 videos para ti</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="section-title">
+                <h2>📊 Cuánta gente ayudamos</h2>
+                <p>🌟 Miles de personas ya aprendieron con nosotros</p>
+            </div>
+            <div class="stats-grid">
+                <div>
+                    <div class="stat-number">👥 5,000+</div>
+                    <p class="stat-label">Personas usando la app</p>
+                </div>
+                <div>
+                    <div class="stat-number">😊 98%</div>
+                    <p class="stat-label">Están contentos</p>
+                </div>
+                <div>
+                    <div class="stat-number">🕐 24/7</div>
+                    <p class="stat-label">Siempre te ayudamos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>❓ Preguntas que nos hacen</h2>
+                <p>🤔 Las dudas más comunes</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-question">🛡️ ¿Es seguro practicar?</h3>
+                    <p class="faq-answer">✅ Sí, súper seguro. Es como un juego, no usas dinero real. Puedes practicar todas las veces que quieras.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">🎓 ¿Necesito saber algo antes?</h3>
+                    <p class="faq-answer">🚫 No, empezamos desde cero. Te enseñamos todo paso a paso, muy despacio.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">📱 ¿Funciona en mi teléfono?</h3>
+                    <p class="faq-answer">✅ Sí, funciona en teléfonos, tablets y computadoras. Se adapta solo a tu pantalla.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>🚀 Empieza hoy mismo</h2>
+            <p>👥 Miles de personas ya aprendieron. 🤝 Únete a nuestra familia de apoyo.</p>
+            <div class="cta-buttons">
+                <button class="btn-primary">🎉 Empezar - Es gratis</button>
+                <button class="btn-outline">💬 Hablar con nosotros</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>🆘 ¿Necesitas ayuda?</h2>
+                <p>👨‍👩‍👧‍👦 Estamos aquí para ayudarte siempre</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="card-icon">📞</div>
+                    <h3>📞 Teléfono</h3>
+                    <p class="card-description">🆓 Gratis las 24 horas</p>
+                    <p class="contact-info">📱 0800-123-4567</p>
+                    <button class="btn-outline">📞 Llamar ahora</button>
+                </div>
+
+                <div class="contact-card">
+                    <div class="card-icon">💬</div>
+                    <h3>💬 Chat</h3>
+                    <p class="card-description">⚡ Te respondemos al toque</p>
+                    <p class="contact-info">🟢 Disponible ahora</p>
+                    <button class="btn-outline">💬 Empezar chat</button>
+                </div>
+
+                <div class="contact-card">
+                    <div class="card-icon">📧</div>
+                    <h3>📧 Email</h3>
+                    <p class="card-description">⏰ Respuesta en 2 horas</p>
+                    <p class="contact-info">📧 ayuda@billeterafacil.com</p>
+                    <button class="btn-outline">📧 Mandar email</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="logo" style="justify-content: center;">
+                        <div class="logo-icon">💙</div>
+                        <span style="font-size: 1.125rem; font-weight: bold; color: #1e293b;">💙 BilleteraFácil</span>
+                    </div>
+                    <p style="color: #64748b; margin-top: 1rem;">🌟 Tecnología para todos</p>
+                </div>
+                <div>
+                    <h4>📚 Recursos</h4>
+                    <ul>
+                        <li><a href="#">📺 Videos</a></li>
+                        <li><a href="#">❓ Preguntas</a></li>
+                        <li><a href="#">🛠️ Ayuda técnica</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>📞 Contacto</h4>
+                    <ul>
+                        <li><a href="#">📧 ayuda@billeterafacil.com</a></li>
+                        <li><a href="#">📱 0800-123-4567</a></li>
+                        <li><a href="#">💬 Chat en vivo</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BilleteraFácil. Hecho con ❤️ para que todos puedan usarlo.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
